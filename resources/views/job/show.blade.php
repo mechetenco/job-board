@@ -10,15 +10,29 @@
         {!! nl2br(e($job->description)) !!}
       </p>
 
-      @can('apply', $job)
-       <x-link-button :href="route('job.application.create', $job)">
-         Apply
-       </x-link-button>
-     @else
-       <div class="text-center text-sm font-medium text-slate-500">
-         You already applied to this job
-       </div>
-     @endcan
+
+      @guest
+    {{-- User is not logged in --}}
+
+     <div class="text-center text-sm font-medium text-red-700 mb-2">
+        You need to log in before you can apply for this job.
+    </div>
+    <x-link-button :href="route('auth.create')">
+        LOGIN
+    </x-link-button>
+@else
+    {{-- User is logged in --}}
+    @can('apply', $job)
+        <x-link-button :href="route('job.application.create', $job)">
+            Apply
+        </x-link-button>
+    @else
+        <div class="text-center text-sm font-medium text-slate-500">
+            You already applied to this job
+        </div>
+    @endcan
+@endguest
+
     </x-job-card>
 
     <x-card class="mb-4">
