@@ -31,7 +31,7 @@
                   <a href="{{ route('my-jobs.index') }}">My Jobs</a>
                 </li>
                 <li>
-                  <form action="{{ route('auth.destroy') }}" method="POST">
+                  <form action="{{ route('auth.logout') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button>Logout</button>
@@ -39,7 +39,7 @@
                 </li>
               @else
                 <li>
-                  <a href="{{ route('auth.create') }}">Sign in</a>
+                  <a href="{{ route('auth.login') }}">Sign in</a>
                 </li>
               @endauth
             </ul>

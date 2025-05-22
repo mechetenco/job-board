@@ -18,7 +18,20 @@ class AuthController extends Controller
    
     public function store(Request $request)
     {
-        $request->validate([
+        
+    }
+
+    
+
+    public function login()
+    {
+      return view('auth.login');   
+    }
+
+
+    public function loginValidate(Request $request)
+    {
+$request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
@@ -33,9 +46,6 @@ class AuthController extends Controller
                 ->with('error', 'Invalid credentials');
         }
     }
-
-    
-
    
     public function destroy()
     {

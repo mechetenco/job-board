@@ -17,7 +17,7 @@
      <div class="text-center text-sm font-medium text-red-700 mb-2">
         You need to log in before you can apply for this job.
     </div>
-    <x-link-button :href="route('auth.create')">
+    <x-link-button :href="route('auth.login')">
         LOGIN
     </x-link-button>
 @else
