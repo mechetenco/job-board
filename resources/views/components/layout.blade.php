@@ -41,6 +41,9 @@
                 <li>
                   <a href="{{ route('auth.login') }}">Sign in</a>
                 </li>
+                 <li>
+                  <a href="{{ route('auth.create') }}">Sign up</a>
+                </li>
               @endauth
             </ul>
           </nav>

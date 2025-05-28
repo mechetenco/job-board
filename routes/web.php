@@ -27,6 +27,14 @@ Route::resource('jobs', JobController::class)
      ->name('auth.destroy');*/
 
 
+      // Show signup form
+
+      Route::get('signup', [AuthController::class, 'create'])->name('auth.create');
+
+// Handle signup form submission
+Route::post('signup', [AuthController::class, 'store'])->name('auth.store');
+
+
      // Show login form
 Route::get('login', [AuthController::class, 'login'])->name('auth.login');
 
