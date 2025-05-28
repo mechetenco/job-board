@@ -47,5 +47,9 @@
             href="{{ route('my-jobs.create') }}">here!</a>
         </div>
       </div>
+      
     @endforelse
+    <div class="mt-4">
+    {{ $jobs->links() }}
+</div>
   </x-layout>

@@ -42,4 +42,7 @@
       </div>
     </div>
     @endforelse
+    <div class="mt-4">
+    {{ $applications->links() }}
+</div>
   </x-layout>

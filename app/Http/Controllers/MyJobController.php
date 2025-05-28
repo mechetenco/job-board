@@ -22,7 +22,7 @@ class MyJobController extends Controller
                     ->jobs()
                     ->with(['employer', 'jobApplications', 'jobApplications.user'])
                     ->withTrashed()
-                    ->get()
+                    ->latest()->paginate(10)
             ]
         );
     }
