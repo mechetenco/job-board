@@ -41,6 +41,13 @@ Route::get('login', [AuthController::class, 'login'])->name('auth.login');
 // Handle login form submission
 Route::post('login', [AuthController::class, 'loginValidate'])->name('auth.login.validate');
 
+
+
+Route::get('forgot-password', [AuthController::class, 'forgot'])->name('password.request');
+Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
+
+Route::get('reset-password/{token}', [AuthController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 // Logout
 Route::delete('logout', [AuthController::class, 'destroy'])->name('auth.logout');
 
