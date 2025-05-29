@@ -42,11 +42,13 @@ Route::get('login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('login', [AuthController::class, 'loginValidate'])->name('auth.login.validate');
 
 
-
+//show password reset request form
 Route::get('forgot-password', [AuthController::class, 'forgot'])->name('password.request');
+//handle the request and send email
 Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
-
+//show password reset form
 Route::get('reset-password/{token}', [AuthController::class, 'showResetForm'])->name('password.reset');
+//update the password
 Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 // Logout
 Route::delete('logout', [AuthController::class, 'destroy'])->name('auth.logout');
@@ -59,6 +61,10 @@ Route::delete('logout', [AuthController::class, 'destroy'])->name('auth.logout')
      Route::resource('job.application', JobApplicationController::class)
          ->only(['create', 'store']);
 
+         //cv download route
+         Route::get('/applications/{application}/cv', [JobApplicationController::class, 'downloadCv'])->name('applications.download.cv');
+
+
          //my job applications
 
      Route::resource('my-job-applications', MyJobApplicationController::class)
@@ -70,4 +76,6 @@ Route::delete('logout', [AuthController::class, 'destroy'])->name('auth.logout')
 
      Route::middleware('employer')
      ->resource('my-jobs', MyJobController::class);
+
+     
  });

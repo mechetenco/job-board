@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class JobApplicationController extends Controller
 {
@@ -46,6 +48,18 @@ class JobApplicationController extends Controller
         return redirect()->route('jobs.show', $job)
             ->with('success', 'Job application submitted.');
     }
+
+
+    public function downloadCv(JobApplication $application)
+{
+    //Gate::authorize('view', $application); // Optional: protect access
+
+    if (!$application->cv_path || !Storage::disk('private')->exists($application->cv_path)) {
+        abort(404, 'CV not found.');
+    }
+
+    return Storage::disk('private')->download($application->cv_path);
+}
 
     /**
      * Display the specified resource.

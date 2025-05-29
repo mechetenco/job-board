@@ -16,7 +16,14 @@
                   Applied {{ $application->created_at->diffForHumans() }}
                 </div>
                 <div>
-                  Download CV
+               @if ($application->cv_path)
+    <a href="{{ route('applications.download.cv', $application) }}" target="_blank" class="text-indigo-500 underline">
+        Download CV
+    </a>
+@else
+    No CV uploaded
+@endif
+
                 </div>
               </div>
   
